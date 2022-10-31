@@ -7,6 +7,7 @@ function Home() {
   return (
     <Container>
         <ImgSlider></ImgSlider>
+        <Viewers></Viewers>
     </Container>
   )
 }
