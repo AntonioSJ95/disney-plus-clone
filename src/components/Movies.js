@@ -1,26 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
+import { selectMovies } from "../features/movie/movieSlice"
+import { useSelector } from "react-redux"
 
 function Movies() {
+
+    const movies = useSelector(selectMovies);
+
+    //The first content movies.map is where is we getting the database info from, in order to show the reccomenden
+    //in this case, I only have one element at my firebase which is Inside Out movie.
   return (
     <Container>
         <h4>Recommended for you</h4>
         <Content>
-            <Wrap>
-                <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EA416AD3B15FCC1BADC817A932A57FFF707556DB2233FFCB4CFEB7C8EEDE23C/scale?width=400&aspectRatio=1.78&format=jpeg"></img>
-            </Wrap>
-            <Wrap>
-                <img src="/images/viewers-pixar.png"></img>
-            </Wrap>
-            <Wrap>
-                <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EA416AD3B15FCC1BADC817A932A57FFF707556DB2233FFCB4CFEB7C8EEDE23C/scale?width=400&aspectRatio=1.78&format=jpeg"></img>
-            </Wrap>
-            <Wrap>
-                <img src="/images/viewers-pixar.png"></img>
-            </Wrap>
-            <Wrap>
-                <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EA416AD3B15FCC1BADC817A932A57FFF707556DB2233FFCB4CFEB7C8EEDE23C/scale?width=400&aspectRatio=1.78&format=jpeg"></img>
-            </Wrap>
+            
+            { movies &&
+            
+                movies.map((movie)=>(
+                    <Wrap key={movie.id}>
+                    <img src={movie.cardImg}></img> 
+                    </Wrap>
+                ))
+            }
             <Wrap>
                 <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EA416AD3B15FCC1BADC817A932A57FFF707556DB2233FFCB4CFEB7C8EEDE23C/scale?width=400&aspectRatio=1.78&format=jpeg"></img>
             </Wrap>
